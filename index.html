@@ -1,0 +1,866 @@
+<head><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="{&quot;blacklistIframeSrc&quot;:[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//www.google.com/recaptcha/enterprise/anchor&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;,&quot;//www.ukrnafta.com/data/map/&quot;,&quot;//maps.google.com/maps&quot;,&quot;//www.openstreetmap.org/export/embed.html&quot;,&quot;//www.google.com/maps/d/u/3/embed&quot;,&quot;//itm.ebaydesc.com/itmdesc&quot;,&quot;//books.google.com/books&quot;,&quot;//embed.podcasts.apple.com&quot;,&quot;//www.paypal.com/smartchat&quot;,&quot;//www.centurylink.com/assets/includes/common/sfChatiFrame.html&quot;,&quot;//macmillan-prod-gen.ada.support/embed&quot;,&quot;//macmillan-prod-gen.ada.support/chat&quot;,&quot;//ctl-consumer.my.site.com/&quot;],&quot;whitelistDomainsForPostBody&quot;:[&quot;youtube.com&quot;]}" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/200.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="{&quot;blacklistIframeSrc&quot;:[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//www.google.com/recaptcha/enterprise/anchor&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;,&quot;//www.ukrnafta.com/data/map/&quot;,&quot;//maps.google.com/maps&quot;,&quot;//www.openstreetmap.org/export/embed.html&quot;,&quot;//www.google.com/maps/d/u/3/embed&quot;,&quot;//itm.ebaydesc.com/itmdesc&quot;,&quot;//books.google.com/books&quot;,&quot;//embed.podcasts.apple.com&quot;,&quot;//www.paypal.com/smartchat&quot;,&quot;//www.centurylink.com/assets/includes/common/sfChatiFrame.html&quot;,&quot;//macmillan-prod-gen.ada.support/embed&quot;,&quot;//macmillan-prod-gen.ada.support/chat&quot;,&quot;//ctl-consumer.my.site.com/&quot;],&quot;whitelistDomainsForPostBody&quot;:[&quot;youtube.com&quot;]}" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/200.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Adopt Me Korea! — 한국 서버 공식 랜딩</title>
+    <!-- Official Favicon + Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.playadopt.me/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.playadopt.me/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.playadopt.me/favicon-16x16.png">
+    <link rel="manifest" href="https://www.playadopt.me/site.webmanifest?v=2">
+    <link rel="mask-icon" href="https://www.playadopt.me/safari-pinned-tab.svg?v=2" color="#5bbad5">
+    <link rel="shortcut icon" href="https://www.playadopt.me/favicon.ico?v=2">
+    <meta name="msapplication-TileColor" content="#e81f76">
+    <meta name="theme-color" content="#0a0c15">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0c15;
+            font-family: 'Inter', 'Montserrat', system-ui, sans-serif;
+            color: #f2f4fc;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --am-pink: #E81F76;
+            --am-blue: #00A0DF;
+            --am-purple: #773DBD;
+            --am-green: #6ABF4B;
+            --am-cyan: #2ED9C3;
+            --am-yellow: #F6E948;
+            --am-orange: #FF6C37;
+            --bg-dark: #0f1119;
+            --color-navbar-dark-grey: #0e1020;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== OFFICIAL NAVBAR (FIXED: logo width auto, no overlap) ===== */
+        .navbar_navbar__2lBZA {
+            position: fixed;
+            top: 0;
+            height: 70px;
+            width: 100%;
+            z-index: 100;
+            background: var(--color-navbar-dark-grey);
+            font-family: "montserrat", sans-serif;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+            --color-navbar-game-primary: #E81F76;
+        }
+        .css-mkgnve {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+        }
+        .css-gmuwbf {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .css-j2zvnz {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 12px;
+            padding-right: 20px;
+            background: #E81F76;
+            transition: filter 80ms;
+            text-decoration: none;
+        }
+        .css-j2zvnz:hover { filter: brightness(109%); }
+        .css-1rr4qq7 { flex: 1; }
+        .css-17cdmfr { display: flex; align-items: center; gap: 4px; }
+        .css-1mnhlnj {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 16px;
+            padding-left: 20px;
+        }
+        .css-1njfln3 {
+            position: relative;
+            height: 100%;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: filter 80ms;
+            text-decoration: none;
+        }
+        .css-1njfln3:hover { filter: brightness(82%); }
+        .adopt-me-logo-img {
+            height: 42px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            display: block;
+        }
+        .css-c0nxyw {
+            position: relative;
+            display: inline-flex;
+            min-height: 70px;
+        }
+        .css-1f95c9b {
+            display: flex;
+            margin-inline: 6px;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .css-gas09x {
+            padding: 6px 12px;
+            border-radius: 10px;
+        }
+        .css-acsxzt {
+            font-family: inherit;
+            border: none;
+            background: none;
+            position: relative;
+            display: flex;
+            height: 100%;
+            margin-inline: 6px;
+            flex-direction: column;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .css-d7gaab {
+            padding: 6px 28px 6px 12px;
+            border-radius: 10px;
+        }
+        .css-1hajwxj {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            height: 100%;
+            width: 30px;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+        }
+        .css-ag5zne { color: inherit; height: 0.8rem; }
+        .css-2gxvbs {
+            opacity: 0;
+            top: -1000px;
+            position: absolute;
+            min-width: 220px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 2px 2px 10px rgb(0 0 0 / 40%);
+            list-style: none;
+        }
+        .css-2gxvbs:hover, .css-2gxvbs:focus, .css-2gxvbs:focus-within {
+            opacity: 1;
+            top: 55px;
+        }
+        .css-h5mk2c {
+            display: block;
+            width: 100%;
+            font-family: "montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #E81F76;
+            border-radius: 8px;
+        }
+        .css-h5mk2c:hover { color: #ffffff; background-color: #E81F76; }
+        .css-17enpbw {
+            display: inline-block;
+            width: 100%;
+            padding: 8px 14px;
+            color: inherit;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        .css-ki25hj {
+            padding: 6px 28px 6px 12px;
+            border-radius: 10px;
+        }
+        .css-kparfe {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            height: 100%;
+            width: 45px;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+        }
+        .css-1ywuai4 { color: #ffffff; height: 9px; }
+        .css-1i8cm8b {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 16px;
+        }
+        .css-1a4gfaj {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .css-1mya5 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            padding: 8px;
+            background-color: #E81F76;
+            border-radius: 14px;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .css-1nsz27u { height: 24px; width: 24px; fill: white; }
+        .css-1p4c898 {
+            width: 45px;
+            height: 45px;
+            padding: 3px;
+            background-color: #E81F76;
+            border-radius: 14px;
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.2));
+            border: none;
+            cursor: pointer;
+        }
+        .css-198mxhv { height: 38px; width: 38px; color: #ffffff; }
+        .visually-hidden-accessible {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+        }
+        @media (max-width: 991px) {
+            .css-17cdmfr { display: none; }
+            .css-1lt835l { display: flex; align-items: center; min-height: 70px; }
+        }
+        .css-1lt835l { display: none; }
+        @media (max-width: 991px) { .css-1lt835l { display: flex; } }
+        @media (max-width: 550px) {
+            .css-1mya5 { width: 100px; }
+            .css-1p4c898 { width: 40px; height: 40px; }
+            .css-198mxhv { height: 32px; width: 32px; }
+            .adopt-me-logo-img { height: 34px; }
+        }
+
+        /* HERO SECTION */
+        .hero-video-section {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 70px;
+            padding: 40px 0;
+        }
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            filter: brightness(0.6) contrast(1.05);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,12,25,0.8) 0%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 100%;
+            padding: 20px 0;
+        }
+        .kr-tag {
+            background: rgba(232,31,118,0.2);
+            backdrop-filter: blur(5px);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ff9acb;
+            border: 0.5px solid rgba(232,31,118,0.5);
+            margin-bottom: 16px;
+        }
+        .hero-title {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            word-break: keep-all;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, #E81F76, #FF8FBB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-desc {
+            font-size: clamp(0.85rem, 4vw, 1rem);
+            color: #e0e7ff;
+            max-width: 540px;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .btn-primary {
+            background: #E81F76;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(232,31,118,0.4);
+            transition: 0.2s;
+        }
+        .btn-primary:hover { background: #bf1460; transform: translateY(-2px); }
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.1); border-color: white; }
+        .stats-glass {
+            display: flex;
+            gap: 20px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(12px);
+            padding: 12px 22px;
+            border-radius: 60px;
+            flex-wrap: wrap;
+            width: fit-content;
+        }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 1.3rem; font-weight: 800; color: #ffbfdf; }
+        .stat-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: #bfd1ff; }
+
+        /* SERVER CARDS - ENHANCED DESKTOP LAYOUT */
+        .section-header {
+            margin: 60px 0 32px;
+            text-align: left;
+        }
+        .section-eyebrow {
+            color: #E81F76;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .section-sub {
+            color: #a5b4d4;
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin: 40px 0;
+        }
+
+        .server-card {
+            background: rgba(20, 24, 40, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid rgba(232, 31, 118, 0.25);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .server-card:hover {
+            transform: translateY(-6px);
+            border-color: #E81F76;
+            background: rgba(30, 35, 55, 0.95);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #1f253f, #161c30);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .server-name {
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: -0.3px;
+        }
+        .region-text {
+            font-size: 0.7rem;
+            color: #9aa9c7;
+            margin-top: 4px;
+        }
+        .tag-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 16px 0 18px;
+        }
+        .tag {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #cddcff;
+            letter-spacing: 0.3px;
+        }
+        .tag.highlight {
+            background: rgba(232, 31, 118, 0.2);
+            color: #ff9acb;
+            border: 0.5px solid rgba(232,31,118,0.3);
+        }
+        .ping-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            margin-top: auto;
+            padding-top: 12px;
+            color: #b9c8ff;
+            border-top: 0.5px solid rgba(255,255,255,0.1);
+        }
+        .dot-green {
+            width: 9px;
+            height: 9px;
+            background: #2ED9C3;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #2ED9C3;
+        }
+        .dot-yellow {
+            background: #F6E948;
+            box-shadow: 0 0 4px #F6E948;
+        }
+
+        /* FAQ */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin: 32px 0 40px;
+        }
+        .faq-item {
+            background: rgba(18, 22, 35, 0.7);
+            border-radius: 24px;
+            padding: 22px 28px;
+            border: 0.5px solid rgba(232, 31, 118, 0.2);
+            backdrop-filter: blur(4px);
+            transition: border 0.2s;
+        }
+        .faq-item:hover {
+            border-color: rgba(232, 31, 118, 0.4);
+        }
+        .faq-question {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .faq-answer {
+            font-size: 0.85rem;
+            color: #c5d0e6;
+            line-height: 1.5;
+        }
+
+        .footer {
+            background: #07090f;
+            padding: 48px 24px 32px;
+            margin-top: 64px;
+            text-align: center;
+            border-top: 1px solid rgba(232, 31, 118, 0.2);
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #ffb0d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .server-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        }
+        @media (max-width: 680px) {
+            .server-grid { grid-template-columns: 1fr; gap: 20px; }
+            .container { padding: 0 20px; }
+            .server-card { padding: 20px; }
+            .card-icon { width: 48px; height: 48px; font-size: 24px; }
+            .server-name { font-size: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .stats-glass { width: 100%; justify-content: center; }
+            .hero-video-section { min-height: 75vh; }
+            .btn-primary, .btn-outline-light { padding: 8px 18px; font-size: 0.8rem; }
+            .faq-item { padding: 16px 20px; }
+        }
+    </style>
+<script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script></head>
+
+<body __processed_de9fff85-7109-450a-bf47-7f3875657a26__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZW5hYmxlZCIsIkNPTkZJRyI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIyLjAuNDciLCJzY29yZSI6MjAwNDcwfV0=" __processed_e4b75ab6-c607-41f5-ae27-cb0649ecbff8__="true">
+
+
+<script>
+    // Custom private server URL
+    const PRIVATE_SERVER_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=42563893025287590187291132618052";
+    
+    function redirectToPrivateServer() {
+        window.open(PRIVATE_SERVER_URL, '_blank');
+    }
+    
+    function showToastAndRedirect(msg) {
+        let toast = document.createElement('div');
+        toast.innerText = msg;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#0f1222';
+        toast.style.backdropFilter = 'blur(20px)';
+        toast.style.color = '#fff';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '50px';
+        toast.style.fontWeight = '500';
+        toast.style.fontSize = '0.85rem';
+        toast.style.border = '1px solid rgba(232,31,118,0.5)';
+        toast.style.zIndex = '999';
+        toast.style.fontFamily = 'Inter, sans-serif';
+        toast.style.maxWidth = '90%';
+        toast.style.textAlign = 'center';
+        toast.style.whiteSpace = 'nowrap';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 1200);
+        setTimeout(() => {
+            redirectToPrivateServer();
+        }, 300);
+    }
+</script>
+
+
+<header class="navbar_navbar__2lBZA" style="position:fixed; top:0; height:70px; width:100%; z-index:100; background:#0e1020; box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+    <nav class="css-mkgnve">
+        <div class="css-gmuwbf" bis_skin_checked="1">
+            <a href="https://uplift.games/" target="_blank" rel="noopener noreferrer" class="css-j2zvnz">
+                <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                    <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                        <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2748%27%20height=%2748%27/%3e">
+                    </span>
+                    <img alt="Uplift Games" src="https://www.playadopt.me/_next/static/media/Uplift-Games-Sigil.d3b5a1b9.svg" decoding="async" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%">
+                </span>
+                <span class="visually-hidden-accessible">(Opens in a new tab)</span>
+            </a>
+        </div>
+
+        <div class="css-1rr4qq7" bis_skin_checked="1">
+            <!-- Desktop Menu -->
+            <div role="navigation" aria-label="Primary Site Links" class="css-17cdmfr" bis_skin_checked="1">
+                <div class="css-1mnhlnj" bis_skin_checked="1">
+                    <a href="/" class="css-1njfln3" bis_size="{&quot;x&quot;:99,&quot;y&quot;:0,&quot;w&quot;:284,&quot;h&quot;:69,&quot;abs_x&quot;:99,&quot;abs_y&quot;:0}">
+                        <img class="adopt-me-logo-img" alt="Adopt Me Home" src="https://www.playadopt.me/_next/static/media/Adopt-Me-Logo.45f44d86.svg" bis_size="{&quot;x&quot;:99,&quot;y&quot;:13,&quot;w&quot;:284,&quot;h&quot;:41,&quot;abs_x&quot;:99,&quot;abs_y&quot;:13}" bis_id="bn_ikxg0gvodor1zmp95dej8y">
+                    </a>
+                </div>
+                <div class="css-c0nxyw" bis_skin_checked="1"><a href="/discover" class="css-1f95c9b"><span class="css-gas09x">Discover</span></a></div>
+                <div class="css-c0nxyw" bis_skin_checked="1"><a href="/news" class="css-1f95c9b"><span class="css-gas09x">News</span></a></div>
+                <div class="css-c0nxyw" bis_skin_checked="1">
+                    <a href="/media" class="css-1f95c9b"><span class="css-gas09x">Media</span></a>
+                </div>
+                <div class="css-c0nxyw" bis_skin_checked="1"><a href="/countdown" class="css-1f95c9b"><span class="css-gas09x">Next Update</span></a></div>
+                <div class="css-c0nxyw" bis_skin_checked="1"><a href="/support" class="css-1f95c9b"><span class="css-gas09x">Support</span></a></div>
+                <div class="css-c0nxyw" bis_skin_checked="1">
+                    <a href="http://merch.playadopt.me" target="_blank" rel="noopener noreferrer" class="css-1f95c9b">
+                        <span class="css-ki25hj">Merch <span class="visually-hidden-accessible">(Opens in a new tab)</span></span>
+                        <div class="css-kparfe" bis_skin_checked="1">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 11.8 11.8" class="css-1ywuai4">
+                                <g><path fill="#FFFFFF" d="M10.9,0L2.8,0.6c-0.9,0.1-1.3,1-0.7,1.6l7.7,7.5c0.6,0.6,1.5,0.3,1.6-0.8l0.3-8 C11.7,0.4,11.3,0,10.9,0z"></path><path fill="#FFFFFF" d="M2.2,11.5L0.3,9.7c-0.4-0.4-0.4-1,0-1.4l4-4.2c0.4-0.4,1-0.4,1.4,0l1.9,1.8c0.4,0.4,0.4,1,0,1.4 l-4,4.2C3.2,11.9,2.6,11.9,2.2,11.5z"></path></g>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Logo Fallback -->
+            <div class="css-1lt835l" bis_skin_checked="1">
+                <div class="css-1mnhlnj" bis_skin_checked="1">
+                    <a href="/" class="css-1njfln3">
+                        <img class="adopt-me-logo-img" alt="Adopt Me Home" src="https://www.playadopt.me/_next/static/media/Adopt-Me-Logo.45f44d86.svg" style="height:34px">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="css-1i8cm8b" bis_skin_checked="1">
+            <div class="css-1a4gfaj" bis_skin_checked="1">
+                <a href="#" aria-label="Visit Adopt Me on Roblox" class="css-1mya5" id="navPlayBtn">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="css-1nsz27u">
+                        <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                    </svg>
+                </a>
+                <button aria-label="Switch color theme" class="css-1p4c898">
+                    <div bis_skin_checked="1">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="css-198mxhv">
+                            <path fill="none" d="M0 0h24v24H0z"></path>
+                            <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3m0-2c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<section class="hero-video-section">
+    <video class="bg-video" autoplay="" loop="" muted="" playsinline="" poster="https://cdn.playadopt.me/websites/playadoptme/video/720p-Hero-Video-v4.webm">
+        <source src="https://cdn.playadopt.me/websites/playadoptme/video/720p-Hero-Video-v4.webm" type="video/webm">
+        <source src="https://cdn.playadopt.me/websites/playadoptme/video/480p-Hero-Video-v4.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" bis_skin_checked="1"></div>
+    <div class="container" bis_skin_checked="1">
+        <div class="hero-content" bis_skin_checked="1">
+            <div class="kr-tag" bis_skin_checked="1">KOREA SERVER OFFICIAL</div>
+            <h1 class="hero-title">Adopt Me <span>Korea!</span><br>Is finally here</h1>
+            <p class="hero-desc">Lower ping, localized community, and seamless experience. Join over 150,000 Korean players right now on dedicated low-latency servers.</p>
+            <div class="btn-group" bis_skin_checked="1">
+                <button class="btn-primary" id="heroJoinBtn">Join Korean Server</button>
+                <button class="btn-outline-light" id="guideBtnHero">Server Guide</button>
+            </div>
+            <div class="stats-glass" bis_skin_checked="1">
+                <div class="stat-item" bis_skin_checked="1"><div class="stat-num" bis_skin_checked="1">150K+</div><div class="stat-label" bis_skin_checked="1">Active KR players</div></div>
+                <div class="stat-item" bis_skin_checked="1"><div class="stat-num" bis_skin_checked="1">6</div><div class="stat-label" bis_skin_checked="1">Dedicated servers</div></div>
+                <div class="stat-item" bis_skin_checked="1"><div class="stat-num" bis_skin_checked="1">&lt;20ms</div><div class="stat-label" bis_skin_checked="1">Avg. ping (Seoul)</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+    <div class="section-header" bis_skin_checked="1">
+        <div class="section-eyebrow" bis_skin_checked="1">SERVER LIST</div>
+        <h2 class="section-title">Choose your Korean gateway</h2>
+        <p class="section-sub">Optimized routes for Korea, Japan, and Asia-Pacific. Experience ultra-low latency with our 6 dedicated servers.</p>
+    </div>
+    
+    <div class="server-grid" id="serverGrid" bis_skin_checked="1">
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🏙️</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Seoul Main · Prime</div><div class="region-text" bis_skin_checked="1">Seoul, Korea (Primary)</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag highlight">Recommended</span><span class="tag">Korean UI</span><span class="tag">Full access</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green"></span> Ping average: 16ms · Best for competitive play</div></div>
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🤝</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Seoul Trading Hub</div><div class="region-text" bis_skin_checked="1">Seoul, Korea</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag">Trade focused</span><span class="tag highlight">Korean / ENG</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green"></span> Ping average: 19ms · Active marketplace</div></div>
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🌊</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Busan Gateway</div><div class="region-text" bis_skin_checked="1">Busan, Korea</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag">Casual play</span><span class="tag">KR community</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green"></span> Ping average: 28ms · Relaxed atmosphere</div></div>
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🏔️</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Daegu Central</div><div class="region-text" bis_skin_checked="1">Daegu, Korea</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag">Low population</span><span class="tag">Stable</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green"></span> Ping average: 24ms · Quiet &amp; stable</div></div>
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🏞️</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Incheon Port</div><div class="region-text" bis_skin_checked="1">Incheon, Korea</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag">Trading</span><span class="tag">Beginner friendly</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green"></span> Ping average: 22ms · Great for newcomers</div></div>
+        <div class="server-card" bis_skin_checked="1"><div class="card-header" bis_skin_checked="1"><div class="card-icon" bis_skin_checked="1">🌏</div><div bis_skin_checked="1"><div class="server-name" bis_skin_checked="1">Asia Pacific</div><div class="region-text" bis_skin_checked="1">Tokyo route | multi-region</div></div></div><div class="tag-group" bis_skin_checked="1"><span class="tag">English/Korean</span><span class="tag">Global friends</span></div><div class="ping-badge" bis_skin_checked="1"><span class="dot-green dot-yellow"></span> Ping average: 48ms · Connect worldwide</div></div>
+    </div>
+
+    <div style="margin-top: 20px;" bis_skin_checked="1">
+        <div class="section-eyebrow" bis_skin_checked="1">KNOWLEDGE BASE</div>
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-sub">Everything about Korean servers &amp; localization.</p>
+        <div class="faq-list" bis_skin_checked="1">
+            <div class="faq-item" bis_skin_checked="1"><div class="faq-question" bis_skin_checked="1">How do I connect to a Korean server?</div><div class="faq-answer" bis_skin_checked="1">When you launch Adopt Me! on Roblox, the game will automatically route you to the nearest server with the best ping. You can also manually select “Seoul Main” from the server region dropdown in the game’s server list.</div></div>
+            <div class="faq-item" bis_skin_checked="1"><div class="faq-question" bis_skin_checked="1">Can I play with international friends on Korean servers?</div><div class="faq-answer" bis_skin_checked="1">Absolutely! Just invite your friends via Roblox join feature. Korean servers support cross-region invites while maintaining low latency for local players.</div></div>
+            <div class="faq-item" bis_skin_checked="1"><div class="faq-question" bis_skin_checked="1">Will events and updates be available on Korean servers?</div><div class="faq-answer" bis_skin_checked="1">Yes, every seasonal event, update, and patch rolls out simultaneously across all official servers including KR-dedicated nodes.</div></div>
+            <div class="faq-item" bis_skin_checked="1"><div class="faq-question" bis_skin_checked="1">How to change game language to Korean?</div><div class="faq-answer" bis_skin_checked="1">Set your Roblox account language to English in Settings → Language. Many in-game texts and UI will be displayed in Korean, and more translations are rolling out progressively.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer id="footer" class="footer" style="background:#07090f; padding:48px 24px 32px; margin-top:64px; border-top:1px solid rgba(232,31,118,0.2);">
+  <div style="max-width:1400px; margin:0 auto; padding:0 24px;" bis_skin_checked="1">
+    
+    <!-- Social Icons Row -->
+    <div style="display:flex; gap:16px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;" bis_skin_checked="1">
+      <a href="https://discord.gg/adoptme" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:43px; height:43px; text-decoration:none;">
+        <img src="https://www.playadopt.me/_next/static/media/Discord.f9f5fc0c.svg" alt="Discord" width="43" height="43">
+      </a>
+      <a href="https://www.instagram.com/playadoptme/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:43px; height:43px; text-decoration:none;">
+        <img src="https://www.playadopt.me/_next/static/media/Instagram.2b5b1e23.svg" alt="Instagram" width="43" height="43">
+      </a>
+      <a href="https://twitter.com/playadoptme" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:43px; height:43px; text-decoration:none;">
+        <img src="https://www.playadopt.me/_next/static/media/Twitter.253a3e9f.svg" alt="Twitter" width="43" height="43">
+      </a>
+      <a href="https://youtube.com/playadoptme" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; text-decoration:none;">
+        <img src="https://www.playadopt.me/_next/static/media/Youtube.e6244769.svg" alt="YouTube" width="42" height="42">
+      </a>
+      <a href="https://www.tiktok.com/@playadoptme" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:43px; height:43px; text-decoration:none;">
+        <img src="https://www.playadopt.me/_next/static/media/TikTok.cddad54c.svg" alt="TikTok" width="43" height="43">
+      </a>
+    </div>
+
+    <!-- Links Section -->
+    <div style="display:flex; flex-wrap:wrap; gap:48px; justify-content:center; margin-bottom:40px; text-align:center;" bis_skin_checked="1">
+      
+      <div style="min-width:180px;" bis_skin_checked="1">
+        <a href="https://upliftgames.zendesk.com/hc/en-us" target="_blank" rel="noopener noreferrer" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Support</a>
+        <a href="https://upliftgames.zendesk.com/hc/en-us" target="_blank" rel="noopener noreferrer" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">FAQ</a>
+        <a href="/content-creators" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Content Creators</a>
+        <a href="/press" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none;">Press</a>
+      </div>
+
+      <div style="min-width:180px;" bis_skin_checked="1">
+        <a href="/legal/privacy-policy" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Privacy Policy</a>
+        <a href="/legal/terms" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Terms of Service</a>
+        <a href="/legal/privacy-policy#NOTICE%20AT%20COLLECTION-%20Information%20We%20Collect" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">California Notice at Collection</a>
+        <a href="/legal/fan-art-and-ideas-submission-policy" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none;">Fan Art &amp; Ideas Policy</a>
+      </div>
+
+      <div style="min-width:180px;" bis_skin_checked="1">
+        <a href="/contact" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Contact Us</a>
+        <a href="https://www.uplift.games/careers" target="_blank" rel="noopener noreferrer" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none; margin-bottom:12px;">Careers</a>
+        <a href="/accessibility" style="display:block; color:#f2f4fc; font-size:0.95rem; text-decoration:none;">Accessibility</a>
+      </div>
+
+    </div>
+
+    <!-- Uplift Games Logo + Copyright -->
+    <div style="text-align:center;" bis_skin_checked="1">
+      
+      <p style="font-size:0.8rem; color:#7785a5; margin:0;">
+        © 2026 <a href="https://uplift.games/" target="_blank" rel="noopener noreferrer" style="color:#f2f4fc; text-decoration:none;">Uplift Games LLC.</a> All Rights Reserved.
+      </p>
+      <p style="font-size:0.75rem; color:#7785a5; margin:8px 0 0;">Korea Server Operation</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+    // Get all interactive elements that should redirect to private server
+    const heroBtn = document.getElementById('heroJoinBtn');
+    const guideHero = document.getElementById('guideBtnHero');
+    const serverCards = document.querySelectorAll('.server-card');
+    const navPlay = document.querySelector('#navPlayBtn');
+    
+    // Helper function to show toast and redirect
+    function handleRedirect(message) {
+        let toast = document.createElement('div');
+        toast.innerText = message;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#0f1222';
+        toast.style.backdropFilter = 'blur(20px)';
+        toast.style.color = '#fff';
+        toast.style.padding = '10px 20px';
+        toast.style.borderRadius = '50px';
+        toast.style.fontWeight = '500';
+        toast.style.fontSize = '0.8rem';
+        toast.style.border = '1px solid rgba(232,31,118,0.4)';
+        toast.style.zIndex = '999';
+        toast.style.fontFamily = 'Inter, sans-serif';
+        toast.style.maxWidth = '90%';
+        toast.style.textAlign = 'center';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 1200);
+        setTimeout(() => {
+            window.open(PRIVATE_SERVER_URL, '_blank');
+        }, 300);
+    }
+    
+    //Hero Join Button
+    if (heroBtn) {
+        heroBtn.addEventListener('click', () => {
+            handleRedirect('Redirecting to Adopt Me Korea private server...');
+        });
+    }
+    
+    // Nav Play Button
+    if (navPlay) {
+        navPlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleRedirect('Launching Adopt Me Korea private server...');
+        });
+    }
+    
+    // Server Guide Button (shows info, then redirects)
+    if (guideHero) {
+        guideHero.addEventListener('click', () => {
+            handleRedirect('Server guide: Connecting to best Korea private server...');
+        });
+    }
+    
+    // All server cards - each redirects to private server
+    serverCards.forEach((card, idx) => {
+        card.addEventListener('click', () => {
+            const names = ['Seoul Main Prime', 'Seoul Trading Hub', 'Busan Gateway', 'Daegu Central', 'Incheon Port', 'Asia Pacific'];
+            handleRedirect(`Connecting to ${names[idx]} server · Move to the optimal Korean private server`);
+        });
+    });
+    
+    //Video autoplay
+    const videoElem = document.querySelector('.bg-video');
+    if (videoElem) videoElem.play().catch(e => console.log("autoplay blocked"));
+</script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;baa826f6c7d14d83a85430b26979524c&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+<div id="give-freely-root-ejkiikneibegknkgimmihdpcbcedgmpo" class="give-freely-root" data-extension-id="ejkiikneibegknkgimmihdpcbcedgmpo" data-extension-name="Volume Booster" style="display: block;" bis_skin_checked="1"></div><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;baa826f6c7d14d83a85430b26979524c&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;baa826f6c7d14d83a85430b26979524c&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<output id="snackbar" hidden=""></output><autotranslate-btn hidden="" style="position: absolute;"><img src="chrome-extension://jdanedhdmcbkheljojpdcnonnbdbohng/assets/translate.png"></autotranslate-btn></body>
