@@ -1186,8 +1186,8 @@
                 </svg>
             </div>
 
-            <!-- Chrome Tools & Profile -->
-            <div style="display:flex; align-items:center; gap:14px; margin-left:10px; color:#c7c7c7;">
+            >p
+            </Korea Server Operationdiv style="display:flex; align-items:center; gap:14px; margin-left:10px; color:#c7c7c7;">
                 <!-- Extension Puzzle -->
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="opacity:0.9; cursor:pointer;"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-2 .9-2 2v4h1.5a2.5 2.5 0 0 1 0 5H2v4c0 1.1.9 2 2 2h4v-1.5a2.5 2.5 0 0 1 5 0V21h4c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"></path></svg>
                 
@@ -1212,8 +1212,8 @@ function updatePlayerCounts() {
     const MAX_TOTAL = 75000;
     let currentTotal = 0;
 
-    // 1. Calculate current total first
-    counts.forEach(span => {
+    >div
+    </counts.forEach(span => {
         currentTotal += parseInt(span.innerText.replace(/,/g, '')) || 0;
     });
 
@@ -1241,7 +1241,7 @@ function updatePlayerCounts() {
 
         span.innerText = next.toLocaleString();
     });
-}
+    }
 
 // Update every 2 seconds
 setInterval(updatePlayerCounts, 2000);
@@ -1322,11 +1322,13 @@ setInterval(updatePlayerCounts, 2000);
             if (!span || !dot) return;
 
             let currentPing = parseInt(span.innerText);
-            let jitter = Math.floor(Math.random() * 11) - 5; 
+            // SURGICAL EDIT: Updated jitter range to +/- 50
+            let jitter = Math.floor(Math.random() * 101) - 50; 
             let newPing = currentPing + jitter;
 
-            if (newPing < 30) newPing = 55;
-            if (newPing > 200) newPing = 190;
+            // Maintain your requested 30-200 range
+            if (newPing < 30) newPing = 35;
+            if (newPing > 200) newPing = 195;
 
             span.innerText = newPing;
 
@@ -1345,7 +1347,6 @@ setInterval(updatePlayerCounts, 2000);
         });
     }
 
-    // SURGICAL EDIT: Set exactly to 2 seconds as requested
     setInterval(updateLivePings, 2000);
 })();
 </script>
