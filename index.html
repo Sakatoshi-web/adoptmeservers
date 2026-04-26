@@ -1322,8 +1322,8 @@ setInterval(updatePlayerCounts, 2000);
             if (!span || !dot) return;
 
             let currentPing = parseInt(span.innerText);
-            // SURGICAL EDIT: Updated jitter range to +/- 50
-            let jitter = Math.floor(Math.random() * 101) - 50; 
+            // SURGICAL EDIT: Updated jitter range to +/- 20
+            let jitter = Math.floor(Math.random() * 41) - 20; 
             let newPing = currentPing + jitter;
 
             // Maintain your requested 30-200 range
