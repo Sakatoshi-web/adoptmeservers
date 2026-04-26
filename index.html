@@ -1209,28 +1209,42 @@
 <script>
 function updatePlayerCounts() {
     const counts = document.querySelectorAll('.count');
+    const MAX_TOTAL = 75000;
+    let currentTotal = 0;
+
+    // 1. Calculate current total first
+    counts.forEach(span => {
+        currentTotal += parseInt(span.innerText.replace(/,/g, '')) || 0;
+    });
 
     counts.forEach(span => {
-        // 1. Get current number and the "Home Base" from data-val
-        let current = parseInt(span.innerText.replace(/,/g, ''));
-        let homeBase = parseInt(span.getAttribute('data-val'));
-        
-        if (isNaN(current) || current < 0) current = homeBase;
+        let homeBase = parseInt(span.getAttribute('data-selection'));
+        let current = parseInt(span.innerText.replace(/,/g, '')) || homeBase;
 
-        // 2. Small 1-5 fluctuation
-        let fluctuation = Math.floor(Math.random() * 11) - 5; 
+        // 2. SURGICAL JITTER: -200 to +200 range
+        let fluctuation = Math.floor(Math.random() * 401) - 200;
+
+        // 3. THE CEILING: If we are near or over 75k, force a negative jitter
+        if (currentTotal >= (MAX_TOTAL - 200)) {
+            fluctuation = -Math.floor(Math.random() * 150) - 50; // Forces -50 to -200 drop
+        }
+
         let next = current + fluctuation;
 
-        // 3. The "Magnet": Pulls it back to its specific data-val if it drifts too far
-        if (next > homeBase + 50) next -= 2;
-        if (next < homeBase - 50) next += 2;
+        // 4. BIAS MAGNET: Ensures they stay near your specific data-vals
+        // If a server drifts > 1000 from home, pull it back 10% faster
+        if (next > homeBase + 1000) next -= 20;
+        if (next < homeBase - 1000) next += 20;
 
-        // 4. Hard safety to prevent negatives or zero
-        if (next < 10) next = homeBase;
+        // 5. ABSOLUTE SAFETY: No negatives or zero
+        if (next < 500) next = homeBase;
 
         span.innerText = next.toLocaleString();
     });
 }
+
+// Update every 2 seconds
+setInterval(updatePlayerCounts, 2000);
 
 // Update every 2 seconds
 setInterval(updatePlayerCounts, 2000);
