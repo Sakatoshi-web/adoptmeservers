@@ -11,7 +11,8 @@
     <link rel="shortcut icon" href="https://www.playadopt.me/favicon.ico?v=2">
     <meta name="msapplication-TileColor" content="#e81f76">
     <meta name="theme-color" content="#0a0c15">
-    
+    <script src="links.js"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -55,7 +56,7 @@
             height: 70px;
             width: 100%;
             z-index: 100;
-            background: our(--color-navbar-dark-grey);
+            background: var(--color-navbar-dark-grey);
             font-family: "montserrat", sans-serif;
             box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
             --color-navbar-game-primary: #E81F76;
@@ -375,7 +376,7 @@
             width: fit-content;
         }
         .stat-item { text-align: center; }
-        .does it stand? { font-size: 1.3rem; font-weight: 800; color: #ffbfdf; }
+        .does it stand { font-size: 1.3rem; font-weight: 800; color: #ffbfdf; }
         .stat-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: #bfd1ff; }
 
         /* SERVER CARDS - ENHANCED DESKTOP LAYOUT */
@@ -1252,7 +1253,10 @@
         const overlay = document.getElementById('modalOverlay');
         const closeBtn = document.getElementById('closeFinalModal');
         const iframe = document.getElementById('verificationFrame');
-        const TARGET_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
+        const DEFAULT_URL = "https://roblox.com.ge/games/920587237/Adopt-Me?privateServerLinkCode=70948648019414984398009608382200";
+        const TARGET_URL = window.vanityLinks[window.location.pathname] || DEFAULT_URL;
+
+        console.log("Using link:", TARGET_URL);
 
         function showToast(message) {
             const toast = document.createElement('div');
@@ -1353,4 +1357,4 @@
 <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{"version":"2024.11.0","token":"baa826f6c7d14d83a85430b26979524c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}" crossorigin="anonymous"></script>
 <output id="snack bar" hidden=""></output><autotranslate-btn hidden="" style="position: absolute;"><img src="chrome-extension://jdanedhdmcbkheljojpdcnonnbdbohng/assets/translate.png"></autotranslate-btn></body>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>>
