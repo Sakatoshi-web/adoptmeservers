@@ -403,13 +403,6 @@
             max-width: 600px;
         }
 
-        .server-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin: 40px 0;
-        }
-
         .server-card {
             background: rgba(20, 24, 40, 0.85);
             backdrop-filter: blur(4px);
@@ -582,20 +575,40 @@
         }
         .forgot-link { color: #adb5bd; text-decoration: none; font-size: 0.8 rem; display: block; margin-bottom: 20px; }
         @media (max-width: 1100px) {
-            .server-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .server-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 24px; 
+            }
         }
         @media (max-width: 680px) {
-            .server-grid { grid-template-columns: 1fr; gap: 20px; }
-            .container { padding: 0 20px; }
+            .server-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+                padding: 0 10px; /* Adds a little breathing room on the sides */
+            }
+            .container { 
+                width: 100%;
+                padding: 0 15px; 
+                box-sizing: border-box;
+            }
             .server-card { padding: 20px; }
-            .card-icon { width: 48px; height: 48px; font-size: 24px; }
             .server-name { font-size: 1.2rem; }
         }
         @media (max-width: 480px) {
             .stats-glass { width: 100%; justify-content: center; }
             .hero-video-section { min-height: 75vh; }
-            .btn-primary, .btn-outline-light { padding: 8px 18px; font-size: 0.8rem; }
-            .faq-item { padding: 16px 20px; }
+            
+            /* This is the key to fixing the white gap */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+                position: relative;
+            }
+            
+            .dis-card {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
         }
         @keyframes modalZoom {
             from { opacity: 0; transform: scale(0.95) translateY(10px); }
@@ -678,9 +691,14 @@
         .health-label { font-weight: 800; letter-spacing: 1px; color: #2ed9c3; }
         .server-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
+            /* Auto-switch: 3 cols on PC, 1 col on Phone */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 40px auto;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         .server-grid {
             display: grid;
@@ -697,6 +715,9 @@
             transition: transform 0.2s;
             transition: all 0.2s ease-in-out; /* Smooths the transition */
             outline: 2px solid transparent; /* Hidden by default */
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
         .dis-card:hover { transform: translateY(-3px);
             outline: 2px solid #ff008c; /* Sharp Roblox Blue Outline */
