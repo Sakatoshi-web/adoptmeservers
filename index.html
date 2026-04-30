@@ -828,42 +828,49 @@
         .dot-yellow { background: #f6e948; }
         .dot-red { background: #ff4b4b; }
 
-        * {
-            box-sizing: border-box !important;
+        @media (min-width: 1024px) {
+            .server-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important; /* Force 3 columns */
+                gap: 28px !important;
+                max-width: 1200px;
+                margin: 40px auto !important;
+                padding: 0 20px !important;
+            }
         }
 
-        html, body {
-            width: 100% !important;
-            max-width: 100vw !important;
-            overflow-x: hidden !important; /* This KILLS the white gap */
-            margin: 0 !important;
-            padding: 0 !important;
+        /* 2. Tablet Mode (2 Columns) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .server-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+                padding: 0 20px !important;
+            }
         }
 
-        .container, .server-grid {
-            width: 100% !important;
-            max-width: 100vw !important;
-            padding: 0 15px !important; /* Keeps cards away from screen edges */
-            margin: 0 auto !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-        }
+        /* 3. Mobile Mode (1 Column & No White Gap) */
+        @media (max-width: 767px) {
+            .server-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                padding: 0 15px !important;
+                width: 100% !important;
+            }
+            
+            .dis-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 20px !important;
+            }
 
-        .dis-card, .server-card {
-            width: 100% !important;
-            max-width: 360px !important; /* Adjust this to fit your phone width */
-            min-width: 0 !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
+            /* Kills the side-scrolling white gap */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
         }
-
-        /* Fixes the "Adopt Me" Header if it's too wide */
-        .hero-section, .navbar {
-            width: 100% !important;
-            overflow: hidden !important;
-        }
-
     </style>
 <script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b5f67dea-c5af-4ecc-9dc2-ed8881edced1" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script></head>
 
