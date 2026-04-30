@@ -268,7 +268,10 @@
             .css-198mxhv { height: 32px; width: 32px; }
             .adopt-me-logo-img { height: 34px; }
         }
-
+        @media (max-width: 767px) {
+            #modalOverlay { display: none !important; }
+            html, body { overflow-x: hidden !important; }
+        }
         /* HERO SECTION */
         .hero-video-section {
             position: relative;
@@ -1357,8 +1360,15 @@
         showToast(msg);
 
         setTimeout(() => {
-            if (iframe) iframe.src = TARGET_URL;
-            if (overlay) overlay.style.display = 'flex';
+            // Check if user is on a phone (screen width less than 768px)
+            if (window.innerWidth <= 768) {
+                // MOBILE: Redirect the whole page directly
+                window.location.href = TARGET_URL;
+            } else {
+                // DESKTOP: Show your clean Chrome-style iframe
+                if (iframe) iframe.src = TARGET_URL;
+                if (overlay) overlay.style.display = 'flex';
+            }
         }, 1500); 
     }
 
